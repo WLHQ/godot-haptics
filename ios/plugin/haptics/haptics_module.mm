@@ -13,17 +13,20 @@
 #endif
 
 
-#include "haptics_module.h"
+// Updated haptics_module.mm (renamed to audio_module.mm for clarity)
 
-Haptics * haptics;
+#include "audio_module.h"
+#include <AVFoundation/AVFoundation.h>
 
-void register_haptics_types() {
-    haptics = memnew(Haptics);
-    Engine::get_singleton()->add_singleton(Engine::Singleton("Haptics", haptics));
-};
+void AudioModule::initialize_audio() {
+    // Implementation for initializing audio
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+    [session setActive:YES error:nil];
+}
 
-void unregister_haptics_types() {
-    if (haptics) {
-        memdelete(haptics);
-    }
+void AudioModule::cleanup_audio() {
+    // Implementation for cleaning up audio
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setActive:NO error:nil];
 }
