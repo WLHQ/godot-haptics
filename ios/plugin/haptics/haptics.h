@@ -16,24 +16,16 @@
 #include "core/object.h"
 #endif
 
-class Haptics : public Object {
+// Updated haptics.h (retaining the name for compatibility)
 
-    GDCLASS(Haptics, Object);
+#include "core/object/class_db.h"
 
-    static Haptics *instance;
+class Audio : public Object {
+    GDCLASS(Audio, Object);
 
 public:
-    void light();
-    void medium();
-    void heavy();
-
-    static Haptics *get_singleton();
-    
-    Haptics();
-    ~Haptics();
-
-protected:
-    static void _bind_methods();
+    void play_audio(const String &file_path);
+    void stop_audio();
 };
 
-#endif
+#endif // AUDIO_H
