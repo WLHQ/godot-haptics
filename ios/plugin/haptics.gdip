@@ -3,7 +3,7 @@ name="Haptics"
 binary="haptics.a"
 
 initialization="initialize_audio"
-deinitialization="unregister_haptics_types"
+deinitialization="cleanup_audio"
 
 [dependencies]
 linked=[]
