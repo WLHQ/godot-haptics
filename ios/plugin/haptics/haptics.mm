@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 
 #ifdef VERSION_4_0
-#include "core/object/class_db.h"
+#include <godot_cpp/core/class_db.hpp>
 #else
 #include "core/class_db.h"
 #endif
