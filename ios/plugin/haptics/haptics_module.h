@@ -6,8 +6,8 @@
 //
 
 // Updated haptics_module.h (renamed to audio_module.h for clarity)
-#ifndef AUDIO_MODULE_H
-#define AUDIO_MODULE_H
+#ifndef HAPTICS_MODULE_H
+#define HAPTICS_MODULE_H
 
 #include "core/object/class_db.h"
 
