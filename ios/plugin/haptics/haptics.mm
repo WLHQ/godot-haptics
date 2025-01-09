@@ -16,46 +16,12 @@
 #endif
 
 #include "haptics.h"
+// Updated haptics.mm (renamed to audio.mm for clarity)
 
-Haptics *Haptics::instance = NULL;
-
-Haptics::Haptics() {
-    instance = this;
-    NSLog(@"initialize haptics");
+void Audio::play_audio(const String &file_path) {
+    // Implementation for playing audio
 }
 
-Haptics::~Haptics() {
-    if (instance == this) {
-        instance = NULL;
-    }
-    NSLog(@"deinitialize haptics");
-}
-
-Haptics *Haptics::get_singleton() {
-    return instance;
-};
-
-
-void Haptics::_bind_methods() {    
-    ClassDB::bind_method("light", &Haptics::light);
-    ClassDB::bind_method("medium", &Haptics::medium);
-    ClassDB::bind_method("heavy", &Haptics::heavy);
-}
-
-void Haptics::light() {
-    UIImpactFeedbackGenerator *generator = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleLight];
-    [generator prepare];
-    [generator impactOccurred];
-}
-
-void Haptics::medium() {
-    UIImpactFeedbackGenerator *generator = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
-    [generator prepare];
-    [generator impactOccurred];
-}
-
-void Haptics::heavy() {
-    UIImpactFeedbackGenerator *generator = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleHeavy];
-    [generator prepare];
-    [generator impactOccurred];
+void Audio::stop_audio() {
+    // Implementation for stopping audio
 }
