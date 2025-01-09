@@ -15,7 +15,7 @@
 
 // Updated haptics_module.mm (renamed to audio_module.mm for clarity)
 
-#include "audio_module.h"
+#include "haptics_module.h"
 #include <AVFoundation/AVFoundation.h>
 
 void AudioModule::initialize_audio() {
