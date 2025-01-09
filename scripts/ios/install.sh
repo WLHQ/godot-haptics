@@ -7,7 +7,7 @@ CACHE_DIR=${IOS_CACHE_DIR}
 SUPPORT_VERSIONS=(${IOS_TEMPLATES[@]})
 VERSION=$([ ! -z "$1" ] && echo $1 || echo ${DEFAULT_IOS_TEMPLATE})
 
-GODOT_SOURCE_URL="https://github.com/kyoz/godot-ios-extracted-headers/releases/download/stable"
+GODOT_SOURCE_URL="https://github.com/kyoz/godot-ios-extracted-headers/releases/tag/stable"
 
 # Create .cache folder if not existed
 if [ ! -d "${CACHE_DIR}" ]; then
