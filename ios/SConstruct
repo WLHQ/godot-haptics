@@ -180,7 +180,9 @@ sources = Glob('plugin/' + env['plugin'] + '/*.mm')
 
 # lib<plugin>.<arch>-<simulator|ios>.<release|debug|release_debug>.a
 library_platform = env["arch"] + "-" + ("simulator" if env["simulator"] else ("iphone" if env['version'] == '3.x' else "ios"))
-library_name = env['plugin'] + "." + library_platform + "." + env["target"] + ".a"
+# library_name = env['plugin'] + "." + library_platform + "." + env["target"] + ".a"
+# library = env.StaticLibrary(target=env['target_path'] + library_name, source=sources)
+library_name = f'libaudio.{env["arch"]}-{"simulator" if env["simulator"] else "ios"}.{env["target"]}.a'
 library = env.StaticLibrary(target=env['target_path'] + library_name, source=sources)
 
 Default(library)
