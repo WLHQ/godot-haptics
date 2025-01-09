@@ -1,0 +1,39 @@
+name: Release Plugin
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build-ios:
+    name: Building for iOS
+    runs-on: "macos-latest"
+
+    steps:
+      - uses: actions/checkout@v3
+    
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+          architecture: 'x64'
+
+      - name: Configuring Python
+        run: |
+          python -c "import sys; print(sys.version)"
+          python -m pip install scons
+          python --version
+          scons --version
+
+      - name: Compile ios plugins
+        run: |
+          ./scripts/ios/release.sh
+          ls -l .release/ios
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: plugins-ios
+          path: .release/ios/*.zip
+          retention-days: 4
+          if-no-files-found: error
