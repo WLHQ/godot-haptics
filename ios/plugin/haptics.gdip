@@ -2,7 +2,7 @@
 name="Haptics"
 binary="haptics.a"
 
-initialization="register_haptics_types"
+initialization="initialize_audio"
 deinitialization="unregister_haptics_types"
 
 [dependencies]
