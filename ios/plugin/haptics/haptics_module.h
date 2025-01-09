@@ -5,13 +5,18 @@
 //  Created by Kyoz on 07/07/2023.
 //
 
-#ifndef haptics_module_h
-#define haptics_module_h
+// Updated haptics_module.h (renamed to audio_module.h for clarity)
+#ifndef AUDIO_MODULE_H
+#define AUDIO_MODULE_H
 
-#import <Foundation/Foundation.h>
-#import "./haptics.h"
+#include "core/object/class_db.h"
 
-void register_haptics_types();
-void unregister_haptics_types();
+class AudioModule : public Object {
+    GDCLASS(AudioModule, Object);
 
-#endif /* haptics_module_h */
+public:
+    void initialize_audio();
+    void cleanup_audio();
+};
+
+#endif // AUDIO_MODULE_H
