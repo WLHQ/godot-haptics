@@ -1,0 +1,42 @@
+name: Release iOS Plugin
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build-ios:
+    name: Building for iOS
+    runs-on: macos-latest
+
+    steps:
+      # Check out the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Set up Python for SCons
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install SCons
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install scons
+
+      # Compile iOS Plugin
+      - name: Compile iOS plugins
+        run: |
+          scons version=4.3 plugin=audio arch=arm64 simulator=no target=release target_path=bin/
+          mkdir -p .release/ios
+          zip -j .release/ios/libaudio-plugin.zip bin/*
+
+      # Upload the compiled plugin as an artifact
+      - name: Upload iOS Plugin
+        uses: actions/upload-artifact@v3
+        with:
+          name: iOS-plugin
+          path: .release/ios/libaudio-plugin.zip
+          retention-days: 30
